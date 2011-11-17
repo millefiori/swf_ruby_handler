@@ -35,5 +35,13 @@ module SwfRubyHandler
 
 			@array << SwfRuby::LosslessReplaceTarget.new( offset, var)
 		end
+
+		def jpeg2 offset, var
+			if var.encoding != Encoding::ASCII_8BIT
+				var = File.open( var, 'rb' ).read
+			end
+
+			@array << SwfRuby::Jpeg2ReplaceTarget.new( offset, var)
+		end
 	end
 end
